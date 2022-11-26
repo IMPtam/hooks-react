@@ -1,5 +1,15 @@
 import React from "react";
 import CollapseWrapper from "../common/collapse";
+
+const ListComponent = ({ children }) => {
+    let i = 0;
+    return React.Children.map(children, (child) => {
+        i++;
+        console.log("Количество", i);
+        return i + child;
+    });
+};
+
 const ChildrenExercise = () => {
     return (
         <CollapseWrapper title="Упражнение">
@@ -10,10 +20,11 @@ const ChildrenExercise = () => {
                 <code>React.Children.map</code> так и{" "}
                 <code>React.Children.toArray</code>
             </p>
-
-            <Component />
-            <Component />
-            <Component />
+            <ListComponent>
+                <Component />
+                <Component />
+                <Component />
+            </ListComponent>
         </CollapseWrapper>
     );
 };
